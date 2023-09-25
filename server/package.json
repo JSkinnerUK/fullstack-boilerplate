@@ -7,7 +7,7 @@
   "scripts": {
     "generate": "graphql-codegen --config ./codegen.ts",
     "start": "yarn build && node -r ts-node/register -r tsconfig-paths/register dist/src/index.js",
-    "start:development": "yarn nodemon --exec yarn ts-node -r tsconfig-paths/register src/index.ts",
+    "start:development": "concurrently \"yarn nodemon --exec yarn ts-node -r tsconfig-paths/register src/index.ts\" \"npx prisma studio\"",
     "test": "yarn test:clean && yarn jest --passWithNoTests --detectOpenHandles --verbose",
     "test:clean": "yarn jest clean --passWithNoTests",
     "generate:graphql": "yarn workspace @project-backend/graphql run generate",
@@ -31,6 +31,7 @@
     "@types/cors": "^2.8.14",
     "@types/lodash": "^4.14.199",
     "@types/node": "^20.6.4",
+    "concurrently": "^8.2.1",
     "copyfiles": "^2.4.1",
     "jest": "^29.7.0",
     "nodemon": "^3.0.1",
