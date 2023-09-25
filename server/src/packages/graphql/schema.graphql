@@ -1,0 +1,33 @@
+type Book {
+  author: User
+  id: ID!
+  title: String!
+}
+
+input GetBookInput {
+  id: ID!
+}
+
+type GetBookResult {
+  book: Book
+}
+
+input GetUserInput {
+  id: ID!
+}
+
+type GetUserResult {
+  user: User
+}
+
+type Query {
+  getBook(input: GetBookInput!): GetBookResult!
+  getUser(input: GetUserInput!): GetUserResult!
+}
+
+type User {
+  books: [Book]
+  email: String!
+  id: ID!
+  name: String!
+}

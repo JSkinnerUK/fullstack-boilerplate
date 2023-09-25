@@ -1,0 +1,11 @@
+type Query {
+  getBook(input: GetBookInput!): GetBookResult!
+}
+
+input GetBookInput {
+  id: ID!
+}
+
+type GetBookResult {
+  book: Book
+}
